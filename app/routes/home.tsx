@@ -1,5 +1,6 @@
 import type { Route } from "./+types/home";
-import { Page } from "../components/page";
+import { Shell } from "../components/Shell";
+import { HeroContent } from "../components/HeroContent";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,5 +10,12 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function HomeRoute() {
-  return <Page />;
+  return (
+    <Shell>
+      <HeroContent
+        title="Lauren & Joe"
+        description={["June 19th, 2027", "The University Club of New York"]}
+      />
+    </Shell>
+  );
 }
