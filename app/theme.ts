@@ -15,6 +15,20 @@ const accent: MantineColorsTuple = [
   "#14532d",
 ];
 
+// Dark grey secondary color for supporting text.
+const secondary: MantineColorsTuple = [
+  "#f5f5f5",
+  "#e0e0e0",
+  "#c6c6c6",
+  "#acacac",
+  "#959595",
+  "#828282",
+  "#757575",
+  "#5c5c5c",
+  "#404040",
+  "#2b2b2b",
+];
+
 // Cream page background (#faf4e6) at the lightest shade.
 const background: MantineColorsTuple = [
   "#faf4e6",
@@ -31,7 +45,7 @@ const background: MantineColorsTuple = [
 
 export const theme = createTheme({
   fontFamily:
-    'Inter, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+    'Bitter, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
   headings: {
     fontFamily: '"Montenegrin Gothic One", sans-serif',
   },
@@ -40,5 +54,6 @@ export const theme = createTheme({
   colors: {
     accent,
     background,
+    secondary,
   },
 });
