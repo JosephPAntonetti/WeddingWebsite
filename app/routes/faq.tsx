@@ -2,7 +2,7 @@ import { Grid, Stack } from "@mantine/core";
 import type { Route } from "./+types/faq";
 import { Shell } from "../components/Shell";
 import { FaqList } from "../components/FaqList";
-import { couple, gallery, rsvp } from "../data/wedding";
+import { couple, gallery } from "../data/wedding";
 import {
   ActionButton,
   BodyText,
@@ -48,9 +48,7 @@ export default function FaqRoute() {
                     Anything we have not covered? Write to us, or send your
                     reply and add a note — we read every one.
                   </BodyText>
-                  <ActionButton to="/#rsvp">
-                    Reply By {rsvp.deadline}
-                  </ActionButton>
+                  <ActionButton to="/#rsvp">Send Your Reply</ActionButton>
                 </Stack>
               </Stack>
             </Reveal>

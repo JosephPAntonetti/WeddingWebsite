@@ -1,7 +1,6 @@
 import { Grid, Stack, Text } from "@mantine/core";
 import { useFetcher } from "react-router";
 import { ATTENDANCE, type RsvpResult } from "../../lib/rsvp";
-import { rsvp } from "../../data/wedding";
 import {
   ActionButton,
   BodyText,
@@ -31,8 +30,8 @@ export function Rsvp() {
               <SectionHeading align="start" eyebrow="Reply" title="R.S.V.P." />
               <Rule w={80} my={0} />
               <BodyText>
-                {rsvp.note} {rsvp.deadline}. Every name on your invitation needs
-                its own line, so send one card per guest.
+                Every name on your invitation needs its own line, so send one
+                card per guest.
               </BodyText>
             </Stack>
           </Reveal>

@@ -2,7 +2,6 @@ import type { Route } from "./+types/home";
 import { Shell } from "../components/Shell";
 import { Countdown } from "../components/sections/Countdown";
 import { Details } from "../components/sections/Details";
-import { DressCode } from "../components/sections/DressCode";
 import { Gallery } from "../components/sections/Gallery";
 import { Hero } from "../components/sections/Hero";
 import { Invitation } from "../components/sections/Invitation";
@@ -41,7 +40,6 @@ export default function HomeRoute() {
       <Schedule />
       <Details />
       <Story />
-      <DressCode />
       <Gallery />
       <Rsvp />
     </Shell>

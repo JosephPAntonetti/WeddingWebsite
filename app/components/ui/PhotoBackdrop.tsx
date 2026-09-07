@@ -1,10 +1,9 @@
 import type { ReactNode } from "react";
 import { Box } from "@mantine/core";
 
-type Scrim = "light" | "heavy" | "gradient";
+type Scrim = "heavy" | "gradient";
 
 const SCRIMS: Record<Scrim, string> = {
-  light: "rgba(17, 16, 16, 0.35)",
   heavy: "rgba(17, 16, 16, 0.72)",
   gradient:
     "linear-gradient(180deg, rgba(17,16,16,0.55) 0%, rgba(17,16,16,0.28) 45%, rgba(17,16,16,0.72) 100%)",
@@ -25,7 +24,7 @@ interface PhotoBackdropProps {
 
 /**
  * A full-bleed photograph with a scrim over it, used as the ground for the
- * white type in the hero, the countdown and the dress code.
+ * white type in the hero and the countdown.
  */
 export function PhotoBackdrop({
   src,

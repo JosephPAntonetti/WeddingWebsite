@@ -29,11 +29,6 @@ export const venue = {
     "https://maps.google.com/?q=The+University+Club+of+New+York,+1+West+54th+Street,+New+York",
 } as const;
 
-export const rsvp = {
-  deadline: "March 1, 2027",
-  note: "Kindly reply by",
-} as const;
-
 /** Google Calendar "add to calendar" link, built from the date above. */
 export const calendarUrl = (() => {
   const url = new URL("https://calendar.google.com/calendar/render");
@@ -57,16 +52,10 @@ export const invitation = {
 
 export const story = {
   eyebrow: "Our Story",
-  script: "How we met",
-  chapters: [
-    {
-      title: "How We Met",
-      body: "A borrowed umbrella outside a bookshop on a grey Tuesday, and a conversation that outlasted the rain. Neither of us had anywhere to be, which turned out to be the point.",
-    },
-    {
-      title: "How He Asked",
-      body: "Six years later, on the same corner, with the same weather and a ring that had been hidden in a coat pocket for the better part of a week. She said yes before he finished asking.",
-    },
+  script: "How he asked",
+  body: [
+    "A ring kept hidden in a coat pocket for the better part of a week, and a corner of the city picked out well in advance.",
+    "It rained anyway. She said yes before he finished asking.",
   ],
 } as const;
 
@@ -103,12 +92,6 @@ export const details = [
   },
 ] as const;
 
-export const dressCode = {
-  eyebrow: "Dress Code",
-  script: "Black Tie Optional",
-  body: "Tuxedos and dinner jackets for the gentlemen, long or midi gowns for the ladies. The terrace is stone and the evening is June, so choose your heels accordingly.",
-} as const;
-
 export const faqs = [
   {
     question: "May I bring a guest?",
@@ -142,7 +125,8 @@ export const faqs = [
   },
   {
     question: "How do I reply?",
-    answer: `Use the form on this site, or write to us the old-fashioned way. Either is welcome, so long as it reaches us by ${rsvp.deadline}.`,
+    answer:
+      "Use the form on this site, or write to us the old-fashioned way. Either is welcome, and the sooner the better for the kitchen.",
   },
 ] as const;
 

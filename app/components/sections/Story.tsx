@@ -2,7 +2,6 @@ import { Grid, Stack } from "@mantine/core";
 import { gallery, story } from "../../data/wedding";
 import {
   BodyText,
-  Eyebrow,
   PhotoFrame,
   Reveal,
   Rule,
@@ -10,7 +9,7 @@ import {
   SectionHeading,
 } from "../ui";
 
-/** How they met and how he asked, set beside a portrait on an ink panel. */
+/** How he asked, set beside a portrait on an ink panel. */
 export function Story() {
   const photo = gallery[2];
 
@@ -25,13 +24,12 @@ export function Story() {
                 eyebrow={story.eyebrow}
                 script={story.script}
               />
-              {story.chapters.map((chapter) => (
-                <Stack key={chapter.title} gap="sm">
-                  <Eyebrow strong>{chapter.title}</Eyebrow>
-                  <BodyText>{chapter.body}</BodyText>
-                  <Rule w={60} my={0} />
-                </Stack>
-              ))}
+              <Stack gap="md">
+                {story.body.map((line) => (
+                  <BodyText key={line}>{line}</BodyText>
+                ))}
+              </Stack>
+              <Rule w={60} my={0} />
             </Stack>
           </Reveal>
         </Grid.Col>
