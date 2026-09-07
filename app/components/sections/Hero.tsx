@@ -13,7 +13,6 @@ export function Hero() {
       <PhotoBackdrop
         src={photos.hero.src}
         position={photos.hero.position}
-        scrim="gradient"
         priority
         h={{ base: "88vh", sm: "100vh" }}
       >

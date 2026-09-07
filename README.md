@@ -40,8 +40,7 @@ app/
   data/wedding.ts       all copy, dates, photographs and navigation
   components/
     ui/                 the reusable vocabulary (see below)
-    sections/           one file per band of the home page (hero, invitation,
-                        countdown)
+    sections/           one file per band of the home page (hero, countdown)
     Shell.tsx           header, navigation drawer and footer chrome
     Logo.tsx            the "Lauren & Joe" wordmark
     Monogram.tsx        the initials, boxed or bare
@@ -62,12 +61,11 @@ Every page is assembled from `app/components/ui`:
 | `Section` | a full-width band; sets the panel colour and publishes its tone |
 | `SectionHeading` | eyebrow, title, script flourish and rule |
 | `Eyebrow` | small tracked capitals |
-| `ScriptText` | the calligraphic accent |
 | `BodyText` | running serif copy with a capped measure |
 | `Rule` | a hairline, optionally broken by a diamond |
 | `ActionButton` | the only button: square, tracked, inverts on hover |
 | `PhotoFrame` | a photograph at a fixed ratio |
-| `PhotoBackdrop` | a full-bleed photograph with a scrim over it |
+| `PhotoBackdrop` | the hero's full-bleed photograph, with a scrim over it |
 | `Reveal` | fades its children in as they scroll into view |
 
 Sections do not choose colours. A `Section` declares itself
@@ -78,7 +76,7 @@ sit on ivory and on near-black without a second set of props.
 ## Still to build
 
 There is no RSVP yet — no form, no route action, no storage. It is coming
-later. The home page is currently three bands (hero, invitation, countdown);
+later. The home page is currently the hero and the countdown; the invitation,
 the schedule, the finer details, the story and the gallery have all been taken
 back out and live in the git history if they are wanted again.
 

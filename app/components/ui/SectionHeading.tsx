@@ -1,28 +1,23 @@
 import { Stack, Title } from "@mantine/core";
 import { fonts } from "../../theme";
 import { Eyebrow } from "./Eyebrow";
-import { ScriptText } from "./ScriptText";
 import { useToneColors } from "./tone";
 
 interface SectionHeadingProps {
   /** Tracked capitals above the title. */
   eyebrow?: string;
   title?: string;
-  /** Calligraphic line, set beneath the title. */
-  script?: string;
   align?: "center" | "start";
   /** Heading level. The page's own title should pass 1. */
   order?: 1 | 2 | 3;
 }
 
 /**
- * Eyebrow, title and script flourish — the stacked heading that opens a
- * section.
+ * Eyebrow and title — the stacked heading that opens a section.
  */
 export function SectionHeading({
   eyebrow,
   title,
-  script,
   align = "center",
   order = 2,
 }: SectionHeadingProps) {
@@ -47,7 +42,6 @@ export function SectionHeading({
           {title}
         </Title>
       )}
-      {script && <ScriptText>{script}</ScriptText>}
     </Stack>
   );
 }
