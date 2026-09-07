@@ -1,12 +1,8 @@
 import type { Route } from "./+types/home";
 import { Shell } from "../components/Shell";
 import { Countdown } from "../components/sections/Countdown";
-import { Details } from "../components/sections/Details";
-import { Gallery } from "../components/sections/Gallery";
 import { Hero } from "../components/sections/Hero";
 import { Invitation } from "../components/sections/Invitation";
-import { Schedule } from "../components/sections/Schedule";
-import { Story } from "../components/sections/Story";
 import { couple, dateLabel, venue } from "../data/wedding";
 
 export function meta(_: Route.MetaArgs) {
@@ -26,10 +22,6 @@ export default function HomeRoute() {
       <Hero />
       <Invitation />
       <Countdown />
-      <Schedule />
-      <Details />
-      <Story />
-      <Gallery />
     </Shell>
   );
 }

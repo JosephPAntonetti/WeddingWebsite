@@ -5,7 +5,6 @@ interface RevealProps {
   children: ReactNode;
   /** Stagger, in milliseconds, before this element fades in. */
   delay?: number;
-  w?: string | number;
 }
 
 /**
@@ -13,7 +12,7 @@ interface RevealProps {
  * animation itself lives in `global.css` so it can be disabled wholesale for
  * visitors who prefer reduced motion.
  */
-export function Reveal({ children, delay = 0, w = "100%" }: RevealProps) {
+export function Reveal({ children, delay = 0 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -40,7 +39,7 @@ export function Reveal({ children, delay = 0, w = "100%" }: RevealProps) {
       ref={ref}
       className="reveal"
       data-visible={visible}
-      w={w}
+      w="100%"
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
