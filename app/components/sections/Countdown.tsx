@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Box, Flex, Stack, Text } from "@mantine/core";
 import { fonts } from "../../theme";
-import { photos, weddingDate } from "../../data/wedding";
-import { Eyebrow, PhotoBackdrop, Reveal, Section } from "../ui";
+import { calendarUrl, photos, weddingDate } from "../../data/wedding";
+import { ActionButton, Eyebrow, PhotoBackdrop, Reveal, Section } from "../ui";
 
 const SECOND = 1000;
 const MINUTE = 60 * SECOND;
@@ -42,7 +42,10 @@ function useRemaining(target: Date): number | null {
   return remaining;
 }
 
-/** Large numerals counting down to the ceremony, set over a darkened plate. */
+/**
+ * Large numerals counting down to the ceremony, set over a darkened plate,
+ * with the calendar link beneath them.
+ */
 export function Countdown() {
   const remaining = useRemaining(weddingDate);
   const units = split(remaining ?? 0);
@@ -97,6 +100,7 @@ export function Countdown() {
                   </Flex>
                 ))}
               </Flex>
+              <ActionButton href={calendarUrl}>Add To Calendar</ActionButton>
             </Stack>
           </Reveal>
         </Box>

@@ -17,7 +17,6 @@ export const weddingDate = new Date("2027-06-19T17:00:00-04:00");
 
 export const dateLabel = {
   short: "June 19, 2027",
-  long: "Saturday, the nineteenth of June",
   year: "Two thousand twenty-seven",
 } as const;
 
@@ -38,15 +37,6 @@ export const calendarUrl = (() => {
   }).toString();
   return url.toString();
 })();
-
-export const invitation = {
-  eyebrow: "You're Invited",
-  script: "Together with their families",
-  body: [
-    `${couple.first} and ${couple.second} invite you to share in the joy of their marriage,`,
-    "an evening of old friends, long tables and later dancing than anyone plans on.",
-  ],
-} as const;
 
 export const faqs = [
   {
@@ -94,11 +84,6 @@ export const faqs = [
 export const photos = {
   hero: { src: mainContent, position: "50% 35%" },
   countdown: { src: mainContent, position: "20% 25%" },
-  invitation: {
-    src: mainContent,
-    alt: `${couple.first} and ${couple.second}`,
-    position: "30% 45%",
-  },
   questions: {
     src: mainContent,
     alt: `${couple.first} and ${couple.second}`,
@@ -107,6 +92,6 @@ export const photos = {
 } as const;
 
 export const navLinks = [
-  { label: "The Invitation", to: "/#invitation" },
+  { label: "The Invitation", to: "/" },
   { label: "Questions", to: "/faq" },
 ] as const;
