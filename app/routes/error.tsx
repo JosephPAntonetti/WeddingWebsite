@@ -1,16 +1,10 @@
-import {
-  Button,
-  Code,
-  Container,
-  Group,
-  Stack,
-  Text,
-  Title,
-} from "@mantine/core";
-import { isRouteErrorResponse, Link } from "react-router";
+import { Code, Stack, Text, Title } from "@mantine/core";
+import { isRouteErrorResponse } from "react-router";
+import { fonts } from "../theme";
+import { ActionButton, Eyebrow, Rule, Section } from "../components/ui";
 
 export function ErrorBoundary({ error }: { error: unknown }) {
-  let code = "Oops!";
+  let code = "Oh dear";
   let message = "Something went wrong";
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
@@ -18,46 +12,42 @@ export function ErrorBoundary({ error }: { error: unknown }) {
   if (isRouteErrorResponse(error)) {
     code = String(error.status);
     message =
-      error.status === 404 ? "You found a secret place." : "Something broke.";
+      error.status === 404 ? "You found a quiet corner" : "Something broke";
     details =
       error.status === 404
-        ? "Unfortunately, this is only a 404 page. The page you are looking for does not exist."
+        ? "There is no page here — only a 404. The invitation is back at the beginning."
         : error.statusText || details;
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
+  } else if (import.meta.env.DEV && error instanceof Error) {
     details = error.message;
     stack = error.stack;
   }
 
   return (
-    <Container size="md" py={80}>
-      <Stack align="center" gap="md">
+    <Section tone="ink" py={{ base: 120, sm: 180 }}>
+      <Stack align="center" gap="lg" ta="center">
         <Title
           order={1}
-          fw={900}
-          fz={{ base: 120, sm: 220 }}
+          ff={fonts.display}
+          fw={200}
+          fz={{ base: 96, sm: 180 }}
           lh={1}
-          c="background.4"
-          ta="center"
+          lts="0.04em"
+          opacity={0.55}
         >
           {code}
         </Title>
-        <Title order={2} fz={{ base: 32, sm: 48 }} ta="center">
-          {message}
-        </Title>
-        <Text size="lg" c="dimmed" ta="center" maw={500}>
+        <Rule w={140} ornament my={0} />
+        <Eyebrow strong>{message}</Eyebrow>
+        <Text fz={16} lh={1.85} c="var(--mantine-color-paper-3)" maw={520}>
           {details}
         </Text>
-        <Group justify="center" mt="md">
-          <Button component={Link} to="/" size="md">
-            Take me back home
-          </Button>
-        </Group>
+        <ActionButton to="/">Back To The Beginning</ActionButton>
         {stack && (
-          <Code block mt="md" w="100%">
+          <Code block mt="xl" w="100%" ta="left">
             {stack}
           </Code>
         )}
       </Stack>
-    </Container>
+    </Section>
   );
 }
