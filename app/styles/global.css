@@ -90,32 +90,6 @@ img.plate {
   border-color: var(--action-hover-bg);
 }
 
-/* Underlined text fields, in the manner of a filled-in reply card. */
-.field input,
-.field textarea,
-.field select {
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid var(--field-rule);
-  border-radius: 0;
-  color: var(--field-fg);
-  padding-left: 0;
-  padding-right: 0;
-  transition: border-color 300ms ease;
-}
-
-.field input:focus,
-.field textarea:focus,
-.field select:focus {
-  border-bottom-color: var(--field-fg);
-  outline: none;
-}
-
-.field input::placeholder,
-.field textarea::placeholder {
-  color: var(--field-placeholder);
-}
-
 /* The FAQ marker loses its upright stroke when its question opens. */
 .faq-marker-stem {
   transition: opacity 250ms ease;

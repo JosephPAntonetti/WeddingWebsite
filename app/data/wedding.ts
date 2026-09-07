@@ -126,7 +126,7 @@ export const faqs = [
   {
     question: "How do I reply?",
     answer:
-      "Use the form on this site, or write to us the old-fashioned way. Either is welcome, and the sooner the better for the kitchen.",
+      "Replies are not open just yet. They will appear on this site in good time — until then, a note to either of us does the job.",
   },
 ] as const;
 
@@ -150,6 +150,5 @@ export const navLinks = [
   { label: "The Invitation", to: "/#invitation" },
   { label: "The Day", to: "/#schedule" },
   { label: "The Details", to: "/#details" },
-  { label: "Reply", to: "/#rsvp" },
   { label: "Questions", to: "/faq" },
 ] as const;

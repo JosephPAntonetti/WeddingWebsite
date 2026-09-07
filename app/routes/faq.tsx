@@ -45,10 +45,10 @@ export default function FaqRoute() {
                 />
                 <Stack gap="md" align="flex-start">
                   <BodyText>
-                    Anything we have not covered? Write to us, or send your
-                    reply and add a note — we read every one.
+                    Anything we have not covered? Write to either of us — we
+                    read every one.
                   </BodyText>
-                  <ActionButton to="/#rsvp">Send Your Reply</ActionButton>
+                  <ActionButton to="/">Back To The Invitation</ActionButton>
                 </Stack>
               </Stack>
             </Reveal>

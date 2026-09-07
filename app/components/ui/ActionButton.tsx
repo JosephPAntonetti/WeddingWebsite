@@ -14,7 +14,6 @@ interface ActionButtonProps {
   variant?: Variant;
   type?: "button" | "submit";
   size?: "sm" | "md";
-  loading?: boolean;
 }
 
 /**
@@ -29,7 +28,6 @@ export function ActionButton({
   variant = "outline",
   type = "button",
   size = "md",
-  loading,
 }: ActionButtonProps) {
   const colors = useToneColors();
   const solid = variant === "solid";
@@ -38,7 +36,6 @@ export function ActionButton({
     className: "action",
     variant: "default" as const,
     radius: 0,
-    loading,
     h: size === "md" ? 46 : 38,
     px: size === "md" ? 34 : 24,
     fz: size === "md" ? 11 : 10,

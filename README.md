@@ -38,7 +38,6 @@ app/
   theme.ts              Mantine theme: the ink/paper palette and the three fonts
   styles/global.css     grain, the black-and-white filter, reveal + form styles
   data/wedding.ts       all copy, dates, photographs and navigation
-  lib/rsvp.ts           reply-card validation, independent of the router
   components/
     ui/                 the reusable vocabulary (see below)
     sections/           one file per band of the home page
@@ -48,7 +47,7 @@ app/
     FaqList.tsx         the ruled question list
     Footer.tsx
   routes/
-    home.tsx            composes the sections, receives the reply card
+    home.tsx            composes the sections of the home page
     faq.tsx             the questions
     error.tsx           the shared error boundary
 ```
@@ -67,7 +66,6 @@ Every page is assembled from `app/components/ui`:
 | `BodyText` | running serif copy with a capped measure |
 | `Rule` | a hairline, optionally broken by a diamond |
 | `ActionButton` | the only button: square, tracked, inverts on hover |
-| `Field` | a form control ruled like a reply card |
 | `PhotoFrame` | a photograph at a fixed ratio |
 | `PhotoBackdrop` | a full-bleed photograph with a scrim over it |
 | `Reveal` | fades its children in as they scroll into view |
@@ -77,11 +75,10 @@ Sections do not choose colours. A `Section` (or `Panel`) declares itself
 `components/ui/tone.ts`. That is what lets the same button, rule and heading
 sit on ivory and on near-black without a second set of props.
 
-## Still to wire up
+## Still to build
 
-`action` in `app/routes/home.tsx` validates a reply and hands back the result,
-but nothing is stored yet — that is where a mailer, a spreadsheet write or a
-database call belongs.
+There is no RSVP yet — no form, no route action, no storage. It is coming
+later.
 
 `assets/maincontent.jpg` is a 13 MB original straight off the camera. It is
 worth resizing (and exporting a `webp`) before the site goes live.
