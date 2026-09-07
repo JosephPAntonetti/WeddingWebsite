@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
-import { Box, Flex, Stack, Text } from "@mantine/core";
+import { Flex, Stack, Text } from "@mantine/core";
 import { fonts } from "../../theme";
-import { calendarUrl, photos, weddingDate } from "../../data/wedding";
-import { ActionButton, Eyebrow, PhotoBackdrop, Reveal, Section } from "../ui";
+import { calendarUrl, weddingDate } from "../../data/wedding";
+import {
+  ActionButton,
+  Eyebrow,
+  Reveal,
+  Section,
+  useToneColors,
+} from "../ui";
 
 const SECOND = 1000;
 const MINUTE = 60 * SECOND;
@@ -43,68 +49,61 @@ function useRemaining(target: Date): number | null {
 }
 
 /**
- * Large numerals counting down to the ceremony, set over a darkened plate,
- * with the calendar link beneath them.
+ * The numerals themselves. Split out so the tone the `Section` publishes is
+ * in scope — the component itself sits outside it.
+ */
+function Numerals({ remaining }: { remaining: number | null }) {
+  const colors = useToneColors();
+  const units = split(remaining ?? 0);
+  const digit = {
+    ff: fonts.display,
+    fz: { base: 40, sm: 76 },
+    fw: 300,
+    lh: 1,
+  } as const;
+
+  return (
+    <Flex
+      gap={{ base: 6, sm: 24 }}
+      justify="center"
+      align="flex-start"
+      wrap="nowrap"
+    >
+      {units.map((unit, index) => (
+        <Flex key={unit.label} gap={{ base: 6, sm: 24 }} wrap="nowrap">
+          <Stack gap={6} align="center">
+            <Text {...digit} lts="0.02em" c={colors.text}>
+              {remaining === null ? "––" : String(unit.value).padStart(2, "0")}
+            </Text>
+            <Eyebrow>{unit.label}</Eyebrow>
+          </Stack>
+          {index < units.length - 1 && (
+            <Text {...digit} c={colors.faint} aria-hidden>
+              .
+            </Text>
+          )}
+        </Flex>
+      ))}
+    </Flex>
+  );
+}
+
+/**
+ * Large numerals counting down to the ceremony on the ivory page, with the
+ * calendar link beneath them.
  */
 export function Countdown() {
   const remaining = useRemaining(weddingDate);
-  const units = split(remaining ?? 0);
-  const photo = photos.countdown;
 
   return (
-    <Section tone="ink" bleed>
-      <PhotoBackdrop
-        src={photo.src}
-        position={photo.position}
-        scrim="heavy"
-        py={{ base: 72, sm: 110 }}
-      >
-        <Box px="var(--page-gutter)">
-          <Reveal>
-            <Stack align="center" gap="lg" c="var(--mantine-color-paper-0)">
-              <Eyebrow>Counting Down</Eyebrow>
-              <Flex
-                gap={{ base: 6, sm: 24 }}
-                justify="center"
-                align="flex-start"
-                wrap="nowrap"
-              >
-                {units.map((unit, index) => (
-                  <Flex key={unit.label} gap={{ base: 6, sm: 24 }} wrap="nowrap">
-                    <Stack gap={6} align="center">
-                      <Text
-                        ff={fonts.display}
-                        fz={{ base: 40, sm: 76 }}
-                        fw={300}
-                        lh={1}
-                        lts="0.02em"
-                      >
-                        {remaining === null
-                          ? "––"
-                          : String(unit.value).padStart(2, "0")}
-                      </Text>
-                      <Eyebrow>{unit.label}</Eyebrow>
-                    </Stack>
-                    {index < units.length - 1 && (
-                      <Text
-                        ff={fonts.display}
-                        fz={{ base: 40, sm: 76 }}
-                        fw={300}
-                        lh={1}
-                        opacity={0.4}
-                        aria-hidden
-                      >
-                        .
-                      </Text>
-                    )}
-                  </Flex>
-                ))}
-              </Flex>
-              <ActionButton href={calendarUrl}>Add To Calendar</ActionButton>
-            </Stack>
-          </Reveal>
-        </Box>
-      </PhotoBackdrop>
+    <Section py={{ base: 72, sm: 110 }}>
+      <Reveal>
+        <Stack align="center" gap="lg">
+          <Eyebrow>Counting Down</Eyebrow>
+          <Numerals remaining={remaining} />
+          <ActionButton href={calendarUrl}>Add To Calendar</ActionButton>
+        </Stack>
+      </Reveal>
     </Section>
   );
 }

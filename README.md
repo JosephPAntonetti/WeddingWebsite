@@ -65,7 +65,7 @@ Every page is assembled from `app/components/ui`:
 | `Rule` | a hairline, optionally broken by a diamond |
 | `ActionButton` | the only button: square, tracked, inverts on hover |
 | `PhotoFrame` | a photograph at a fixed ratio |
-| `PhotoBackdrop` | a full-bleed photograph with a scrim over it |
+| `PhotoBackdrop` | the hero's full-bleed photograph, with a scrim over it |
 | `Reveal` | fades its children in as they scroll into view |
 
 Sections do not choose colours. A `Section` declares itself

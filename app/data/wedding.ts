@@ -83,7 +83,6 @@ export const faqs = [
  */
 export const photos = {
   hero: { src: mainContent, position: "50% 35%" },
-  countdown: { src: mainContent, position: "20% 25%" },
   questions: {
     src: mainContent,
     alt: `${couple.first} and ${couple.second}`,
