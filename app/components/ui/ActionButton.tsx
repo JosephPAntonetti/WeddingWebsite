@@ -3,17 +3,13 @@ import { Button } from "@mantine/core";
 import { Link } from "react-router";
 import { useToneColors } from "./tone";
 
-type Variant = "outline" | "solid";
-
 interface ActionButtonProps {
   children: ReactNode;
   /** Internal route. Takes precedence over `href`. */
   to?: string;
   /** External or hash link. */
   href?: string;
-  variant?: Variant;
   type?: "button" | "submit";
-  size?: "sm" | "md";
 }
 
 /**
@@ -25,29 +21,26 @@ export function ActionButton({
   children,
   to,
   href,
-  variant = "outline",
   type = "button",
-  size = "md",
 }: ActionButtonProps) {
   const colors = useToneColors();
-  const solid = variant === "solid";
 
   const shared = {
     className: "action",
     variant: "default" as const,
     radius: 0,
-    h: size === "md" ? 46 : 38,
-    px: size === "md" ? 34 : 24,
-    fz: size === "md" ? 11 : 10,
+    h: 46,
+    px: 34,
+    fz: 11,
     fw: 500,
     tt: "uppercase" as const,
     lts: "0.28em",
     style: {
-      "--action-fg": solid ? colors.inverse : colors.text,
-      "--action-bg": solid ? colors.text : "transparent",
-      "--action-border": solid ? colors.text : colors.rule,
-      "--action-hover-fg": solid ? colors.text : colors.inverse,
-      "--action-hover-bg": solid ? "transparent" : colors.text,
+      "--action-fg": colors.text,
+      "--action-bg": "transparent",
+      "--action-border": colors.rule,
+      "--action-hover-fg": colors.inverse,
+      "--action-hover-bg": colors.text,
     } as React.CSSProperties,
   };
 

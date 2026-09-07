@@ -2,7 +2,7 @@ import { Grid, Stack } from "@mantine/core";
 import {
   calendarUrl,
   dateLabel,
-  gallery,
+  photos,
   invitation,
   venue,
 } from "../../data/wedding";
@@ -19,7 +19,7 @@ import {
 
 /** Photograph beside the invitation proper, with the calendar link. */
 export function Invitation() {
-  const photo = gallery[1];
+  const photo = photos.invitation;
 
   return (
     <Section id="invitation">

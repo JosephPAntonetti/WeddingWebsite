@@ -26,10 +26,10 @@ Almost everything a guest reads lives in **`app/data/wedding.ts`** — the names
 the date, the venue, the schedule, the questions, the photographs. Change it
 there and every page follows; the components take no hard-coded copy.
 
-Photographs go in `assets/` and are imported into `app/data/wedding.ts`. They
-are developed to black and white in CSS, so colour originals can be dropped in
-as they are. The gallery currently reads the one available frame at six
-different crops — add more imports to `gallery` and the mosaic picks them up.
+Photographs go in `assets/` and are imported into `app/data/wedding.ts`, where
+`photos` names one per place it appears. They are developed to black and white
+in CSS, so colour originals can be dropped in as they are; only one frame
+exists so far, so every entry points at it with a different crop.
 
 ## How it is put together
 
@@ -40,7 +40,8 @@ app/
   data/wedding.ts       all copy, dates, photographs and navigation
   components/
     ui/                 the reusable vocabulary (see below)
-    sections/           one file per band of the home page
+    sections/           one file per band of the home page (hero, invitation,
+                        countdown)
     Shell.tsx           header, navigation drawer and footer chrome
     Logo.tsx            the "Lauren & Joe" wordmark
     Monogram.tsx        the initials, boxed or bare
@@ -59,7 +60,6 @@ Every page is assembled from `app/components/ui`:
 | Component | What it is |
 | --- | --- |
 | `Section` | a full-width band; sets the panel colour and publishes its tone |
-| `Panel` | a card that carries its own tone, for dark plates on the ivory page |
 | `SectionHeading` | eyebrow, title, script flourish and rule |
 | `Eyebrow` | small tracked capitals |
 | `ScriptText` | the calligraphic accent |
@@ -70,7 +70,7 @@ Every page is assembled from `app/components/ui`:
 | `PhotoBackdrop` | a full-bleed photograph with a scrim over it |
 | `Reveal` | fades its children in as they scroll into view |
 
-Sections do not choose colours. A `Section` (or `Panel`) declares itself
+Sections do not choose colours. A `Section` declares itself
 `paper` or `ink`, and every primitive inside reads the matching palette from
 `components/ui/tone.ts`. That is what lets the same button, rule and heading
 sit on ivory and on near-black without a second set of props.
@@ -78,7 +78,9 @@ sit on ivory and on near-black without a second set of props.
 ## Still to build
 
 There is no RSVP yet — no form, no route action, no storage. It is coming
-later.
+later. The home page is currently three bands (hero, invitation, countdown);
+the schedule, the finer details, the story and the gallery have all been taken
+back out and live in the git history if they are wanted again.
 
 `assets/maincontent.jpg` is a 13 MB original straight off the camera. It is
 worth resizing (and exporting a `webp`) before the site goes live.

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Box, Flex, Stack, Text } from "@mantine/core";
 import { fonts } from "../../theme";
-import { gallery, weddingDate } from "../../data/wedding";
+import { photos, weddingDate } from "../../data/wedding";
 import { Eyebrow, PhotoBackdrop, Reveal, Section } from "../ui";
 
 const SECOND = 1000;
@@ -46,7 +46,7 @@ function useRemaining(target: Date): number | null {
 export function Countdown() {
   const remaining = useRemaining(weddingDate);
   const units = split(remaining ?? 0);
-  const photo = gallery[4];
+  const photo = photos.countdown;
 
   return (
     <Section tone="ink" bleed>

@@ -2,7 +2,7 @@ import { Grid, Stack } from "@mantine/core";
 import type { Route } from "./+types/faq";
 import { Shell } from "../components/Shell";
 import { FaqList } from "../components/FaqList";
-import { couple, gallery } from "../data/wedding";
+import { couple, photos } from "../data/wedding";
 import {
   ActionButton,
   BodyText,
@@ -23,7 +23,7 @@ export function meta(_: Route.MetaArgs) {
 }
 
 export default function FaqRoute() {
-  const photo = gallery[3];
+  const photo = photos.questions;
 
   return (
     <Shell>
@@ -34,6 +34,7 @@ export default function FaqRoute() {
               <Stack gap="xl">
                 <SectionHeading
                   align="start"
+                  order={1}
                   eyebrow="Good To Know"
                   title="Frequently Asked Questions"
                 />

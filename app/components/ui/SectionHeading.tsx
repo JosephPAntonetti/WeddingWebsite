@@ -1,8 +1,6 @@
-import type { ReactNode } from "react";
 import { Stack, Title } from "@mantine/core";
 import { fonts } from "../../theme";
 import { Eyebrow } from "./Eyebrow";
-import { Rule } from "./Rule";
 import { ScriptText } from "./ScriptText";
 import { useToneColors } from "./tone";
 
@@ -13,24 +11,20 @@ interface SectionHeadingProps {
   /** Calligraphic line, set beneath the title. */
   script?: string;
   align?: "center" | "start";
-  /** Break the heading with a small diamond rule. */
-  ornament?: boolean;
+  /** Heading level. The page's own title should pass 1. */
   order?: 1 | 2 | 3;
-  children?: ReactNode;
 }
 
 /**
- * Eyebrow, title, script flourish and rule — the stacked heading that opens
- * every section.
+ * Eyebrow, title and script flourish — the stacked heading that opens a
+ * section.
  */
 export function SectionHeading({
   eyebrow,
   title,
   script,
   align = "center",
-  ornament = false,
   order = 2,
-  children,
 }: SectionHeadingProps) {
   const colors = useToneColors();
 
@@ -54,8 +48,6 @@ export function SectionHeading({
         </Title>
       )}
       {script && <ScriptText>{script}</ScriptText>}
-      {ornament && <Rule w={140} ornament my="xs" />}
-      {children}
     </Stack>
   );
 }

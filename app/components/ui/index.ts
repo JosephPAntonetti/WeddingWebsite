@@ -1,7 +1,6 @@
 export { ActionButton } from "./ActionButton";
 export { BodyText } from "./BodyText";
 export { Eyebrow } from "./Eyebrow";
-export { Panel } from "./Panel";
 export { PhotoBackdrop } from "./PhotoBackdrop";
 export { PhotoFrame } from "./PhotoFrame";
 export { Reveal } from "./Reveal";
