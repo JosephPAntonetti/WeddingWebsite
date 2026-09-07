@@ -1,59 +1,65 @@
 import { createTheme, type MantineColorsTuple } from "@mantine/core";
 
-// Dark green brand color (#14532d) sits at the darkest shade so `accent.9`
-// renders the exact brand green while lighter shades support hover/borders.
-const accent: MantineColorsTuple = [
-  "#ecf6ef",
-  "#d6e9dc",
-  "#aed2ba",
-  "#82ba95",
-  "#5fa676",
-  "#489a64",
-  "#3b945b",
-  "#2c7f49",
-  "#1f6f3d",
-  "#14532d",
+/**
+ * The palette is deliberately monochrome: a warm ivory "paper" and a soft
+ * black "ink", with the greys in between doing all of the work. Anything that
+ * needs to feel like a photograph is desaturated in CSS (see `global.css`)
+ * rather than tinted here, so the whole site reads as a single black and
+ * white plate.
+ */
+const ink: MantineColorsTuple = [
+  "#f4f3f1",
+  "#e2e0dc",
+  "#c8c5bf",
+  "#aca8a0",
+  "#918c83",
+  "#736e65",
+  "#57534b",
+  "#3b3833",
+  "#232120",
+  "#111010",
 ];
 
-// Dark grey secondary color for supporting text.
-const secondary: MantineColorsTuple = [
-  "#f5f5f5",
-  "#e0e0e0",
-  "#c6c6c6",
-  "#acacac",
-  "#959595",
-  "#828282",
-  "#757575",
-  "#5c5c5c",
-  "#404040",
-  "#2b2b2b",
+// Warm off-white used for page and card surfaces.
+const paper: MantineColorsTuple = [
+  "#fbf9f6",
+  "#f5f2ec",
+  "#ece7de",
+  "#e0dace",
+  "#d2cabb",
+  "#bfb5a3",
+  "#a79b86",
+  "#8a7e69",
+  "#6b6152",
+  "#4a4339",
 ];
 
-// Cream page background (#faf4e6) at the lightest shade.
-const background: MantineColorsTuple = [
-  "#faf4e6",
-  "#f2ead2",
-  "#e6d9b0",
-  "#dbc78b",
-  "#d2b76d",
-  "#cdad59",
-  "#caa84d",
-  "#b3933f",
-  "#9f8235",
-  "#8a6f28",
-];
+export const fonts = {
+  /** High-contrast serif used for display type and headings. */
+  display: '"Cormorant Garamond", "Times New Roman", Times, serif',
+  /** Slightly sturdier serif used for running copy. */
+  body: '"EB Garamond", "Cormorant Garamond", Georgia, serif',
+  /** Calligraphic accent, reserved for names and one-word flourishes. */
+  script: '"Monsieur La Doulaise", "Snell Roundhand", cursive',
+};
 
 export const theme = createTheme({
-  fontFamily:
-    'Bitter, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
+  fontFamily: fonts.body,
+  fontFamilyMonospace: 'ui-monospace, "SFMono-Regular", Menlo, monospace',
   headings: {
-    fontFamily: '"Montenegrin Gothic One", sans-serif',
+    fontFamily: fonts.display,
+    fontWeight: "300",
+    sizes: {
+      h1: { fontSize: "clamp(2.75rem, 8vw, 5.5rem)", lineHeight: "1.05" },
+      h2: { fontSize: "clamp(2rem, 5vw, 3.25rem)", lineHeight: "1.15" },
+      h3: { fontSize: "clamp(1.5rem, 3vw, 2rem)", lineHeight: "1.2" },
+      h4: { fontSize: "1.25rem", lineHeight: "1.3" },
+    },
   },
-  primaryColor: "accent",
+  primaryColor: "ink",
   primaryShade: 9,
-  colors: {
-    accent,
-    background,
-    secondary,
-  },
+  defaultRadius: 0,
+  colors: { ink, paper },
+  black: "#111010",
+  white: "#fbf9f6",
 });

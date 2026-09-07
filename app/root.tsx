@@ -13,7 +13,8 @@ import {
 
 import type { Route } from "./+types/root";
 import { theme } from "./theme";
-import "@mantine/core/styles.css";
+import "@mantine/core/styles.layer.css";
+import "./styles/global.css";
 
 export { ErrorBoundary } from "./routes/error";
 
@@ -26,7 +27,7 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Monsieur+La+Doulaise&family=Montenegrin+Gothic+One&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Monsieur+La+Doulaise&display=swap",
   },
 ];
 
@@ -36,12 +37,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#111010" />
         <Meta />
         <Links />
-        <ColorSchemeScript />
+        <ColorSchemeScript defaultColorScheme="light" />
       </head>
-      <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+      <body className="grain">
+        <MantineProvider theme={theme} defaultColorScheme="light">
+          {children}
+        </MantineProvider>
         <ScrollRestoration />
         <Scripts />
       </body>

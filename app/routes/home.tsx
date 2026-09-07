@@ -1,108 +1,49 @@
-import { useEffect, useState } from "react";
 import type { Route } from "./+types/home";
-import {
-  Button,
-  Card,
-  Container,
-  Image,
-  Stack,
-  Text,
-  Transition,
-} from "@mantine/core";
 import { Shell } from "../components/Shell";
-import { Logo } from "../components/Logo";
-import mainContent from "../../assets/maincontent.jpg";
+import { Countdown } from "../components/sections/Countdown";
+import { Details } from "../components/sections/Details";
+import { DressCode } from "../components/sections/DressCode";
+import { Gallery } from "../components/sections/Gallery";
+import { Hero } from "../components/sections/Hero";
+import { Invitation } from "../components/sections/Invitation";
+import { Rsvp } from "../components/sections/Rsvp";
+import { Schedule } from "../components/sections/Schedule";
+import { Story } from "../components/sections/Story";
+import { couple, dateLabel, venue } from "../data/wedding";
+import { parseRsvp } from "../lib/rsvp";
 
-const calendarUrl = new URL(
-  "https://calendar.google.com/calendar/render",
-);
-calendarUrl.search = new URLSearchParams({
-  action: "TEMPLATE",
-  text: "Lauren & Joe's Wedding",
-  dates: "20270619/20270620",
-  location: "The University Club of New York",
-}).toString();
-
-function CalendarIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={18}
-      height={18}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <rect x="3" y="4" width="18" height="18" rx="2" />
-      <path d="M16 2v4M8 2v4M3 10h18" />
-    </svg>
-  );
-}
-
-export function meta({}: Route.MetaArgs) {
+export function meta(_: Route.MetaArgs) {
+  const title = `${couple.first} & ${couple.second} — ${dateLabel.short}`;
   return [
-    { title: "Home" },
-    { name: "description", content: "Home" },
+    { title },
+    {
+      name: "description",
+      content: `${couple.first} and ${couple.second} are getting married on ${dateLabel.short} at ${venue.name}.`,
+    },
   ];
 }
 
+/**
+ * Receives the reply card. Validation lives in `lib/rsvp`; persisting the
+ * reply (mail, sheet, database) is the one piece still to be wired up.
+ */
+export async function action({ request }: Route.ActionArgs) {
+  const form = await request.formData();
+  return parseRsvp(form);
+}
+
 export default function HomeRoute() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   return (
-    <Shell>
-      <Container size="sm" pt={0} pb={80}>
-        <Transition
-          mounted={mounted}
-          transition="fade-up"
-          duration={800}
-          timingFunction="ease"
-        >
-          {(styles) => (
-            <Card shadow="sm" padding="xl" radius="md" withBorder style={styles}>
-              <Card.Section>
-                <Image
-                  src={mainContent}
-                  alt="Lauren & Joe"
-                  h={{ base: 300, sm: 400 }}
-                  fit="cover"
-                />
-              </Card.Section>
-              <Stack align="center" gap="md" mt="xl">
-                <h1 style={{ margin: 0 }}>
-                  <Logo />
-                </h1>
-                <Stack align="center" gap={2}>
-                  <Text fz={16} ta="center" c="secondary.8">
-                    June 19th, 2027
-                  </Text>
-                  <Text fz={16} ta="center" c="secondary.8">
-                    The University Club of New York
-                  </Text>
-                  <Button
-                    component="a"
-                    href={calendarUrl.toString()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    mt="xs"
-                    leftSection={<CalendarIcon />}
-                  >
-                    Add to Calendar
-                  </Button>
-                </Stack>
-              </Stack>
-            </Card>
-          )}
-        </Transition>
-      </Container>
+    <Shell headerOverlay>
+      <Hero />
+      <Invitation />
+      <Countdown />
+      <Schedule />
+      <Details />
+      <Story />
+      <DressCode />
+      <Gallery />
+      <Rsvp />
     </Shell>
   );
 }
