@@ -23,13 +23,13 @@ docker run -p 3000:3000 wedding-website
 ## Editing the wedding
 
 Almost everything a guest reads lives in **`app/data/wedding.ts`** — the names,
-the date, the venue, the schedule, the questions, the photographs. Change it
-there and every page follows; the components take no hard-coded copy.
+the date, the venue, the photographs. Change it there and every page follows;
+the components take no hard-coded copy.
 
 Photographs go in `assets/` and are imported into `app/data/wedding.ts`, where
 `photos` names one per place it appears. They are developed to black and white
-in CSS, so colour originals can be dropped in as they are; only one frame
-exists so far, so every entry points at it with a different crop.
+in CSS, so colour originals can be dropped in as they are. The site uses one
+photograph today: the plate behind the hero.
 
 ## How it is put together
 
@@ -44,11 +44,9 @@ app/
     Shell.tsx           header, navigation drawer and footer chrome
     Logo.tsx            the "Lauren & Joe" wordmark
     Monogram.tsx        the initials, boxed or bare
-    FaqList.tsx         the ruled question list
     Footer.tsx
   routes/
     home.tsx            composes the sections of the home page
-    faq.tsx             the questions
     error.tsx           the shared error boundary
 ```
 
@@ -77,8 +75,8 @@ sit on ivory and on near-black without a second set of props.
 
 There is no RSVP yet — no form, no route action, no storage. It is coming
 later. The home page is currently the hero and the countdown; the invitation,
-the schedule, the finer details, the story and the gallery have all been taken
-back out and live in the git history if they are wanted again.
+the schedule, the finer details, the story, the gallery and the questions have
+all been taken back out and live in the git history if they are wanted again.
 
 `assets/maincontent.jpg` is a 13 MB original straight off the camera. It is
 worth resizing (and exporting a `webp`) before the site goes live.
