@@ -90,25 +90,3 @@ img.plate {
   border-color: var(--action-hover-bg);
 }
 
-/* The FAQ marker loses its upright stroke when its question opens. */
-.faq-marker-stem {
-  transition: opacity 250ms ease;
-}
-
-[aria-expanded="true"] .faq-marker-stem {
-  opacity: 0;
-}
-
-/* Questions stay flat on the page; hovering dims the row instead of boxing it. */
-.mantine-Accordion-control,
-.mantine-Accordion-control:hover {
-  background-color: transparent;
-}
-
-.mantine-Accordion-control {
-  transition: opacity 250ms ease;
-}
-
-.mantine-Accordion-control:hover {
-  opacity: 0.6;
-}
